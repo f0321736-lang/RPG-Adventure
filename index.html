@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petualangan Dunia Fantasi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>⚔️ Petualangan Dunia Fantasi</h1>
+      <p class="subtitle">Kumpulkan koin, kalahkan monster, dan jadilah legenda!</p>
+    </header>
+
+    <section class="hud">
+      <span>Level <b id="level">1</b></span>
+      <span>❤️ HP <b id="hp">100/100</b></span>
+      <span>🪙 Koin <b id="coins">50</b></span>
+      <span>🧪 Potion <b id="potions">2</b></span>
+      <span>🛡️ Armor <b id="armor">0</b></span>
+      <span>⚔️ Senjata <b id="weapon">Sword</b></span>
+    </section>
+
+    <div class="game-wrap">
+      <canvas id="game" width="900" height="480" aria-label="Area permainan"></canvas>
+      <div id="message" class="message">Petualangan dimulai! Tekan A/D untuk bergerak.</div>
+
+      <section id="weaponMenu" class="overlay hidden">
+        <div class="panel">
+          <h2>⚔️ Ganti Senjata</h2>
+          <p>Pilih senjata yang sudah kamu miliki.</p>
+          <button onclick="selectWeapon('sword')">🗡️ Sword <small id="swordState"></small></button>
+          <button onclick="selectWeapon('bow')">🏹 Bow <small id="bowState"></small></button>
+          <button onclick="selectWeapon('magic')">🔮 Magic <small id="magicState"></small></button>
+          <p id="weaponInfo" class="status">Senjata aktif: Sword</p>
+          <button class="secondary" onclick="closeWeaponMenu()">Tutup Menu (Esc)</button>
+        </div>
+      </section>
+
+      <section id="shopMenu" class="overlay hidden">
+        <div class="panel">
+          <h2>🏪 Pedagang Kelana</h2>
+          <p>Koin kamu: <b id="shopCoins">50</b></p>
+          <button onclick="buy('potion')">1. 🧪 Potion <span>15 koin</span></button>
+          <button onclick="buy('sword')">2. 🗡️ Sword <span>40 koin</span></button>
+          <button onclick="buy('bow')">3. 🏹 Bow <span>55 koin</span></button>
+          <button onclick="buy('magic')">4. 🔮 Magic <span>90 koin</span></button>
+          <button onclick="buy('armor')">5. 🛡️ Armor <span>45 koin</span></button>
+          <p id="shopMessage" class="status">Pilih barang untuk dibeli.</p>
+          <button class="secondary" onclick="closeShop()">Tutup Shop (Esc)</button>
+        </div>
+      </section>
+
+      <section id="endMenu" class="overlay hidden">
+        <div class="panel">
+          <h2 id="endTitle">Level selesai!</h2>
+          <p id="endText">Tekan Enter untuk lanjut.</p>
+          <button onclick="nextLevel()">Lanjut (Enter)</button>
+          <button class="secondary" onclick="restartGame()">Ulang Game (R)</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="help">
+      <h2>🎮 Daftar Semua Tombol</h2>
+      <div class="controls">
+        <p><kbd>A</kbd> / <kbd>D</kbd> — Bergerak kiri/kanan</p>
+        <p><kbd>Space</kbd> — Melompat</p>
+        <p><kbd>L</kbd> — Menyerang</p>
+        <p><kbd>P</kbd> — Menggunakan potion</p>
+        <p><kbd>K</kbd> — Buka/tutup Shop</p>
+        <p><kbd>J</kbd> — Buka menu ganti senjata</p>
+        <p><kbd>1</kbd>–<kbd>5</kbd> — Beli barang saat Shop terbuka</p>
+        <p><kbd>E</kbd> — Masuk dungeon rahasia saat terbuka</p>
+        <p><kbd>Enter</kbd> — Lanjut level setelah menang</p>
+        <p><kbd>R</kbd> — Mulai ulang game</p>
+        <p><kbd>Esc</kbd> — Tutup menu</p>
+      </div>
+      <p class="note">Boss muncul setiap 5 level. Kalahkan musuh untuk mendapat koin. Senjata harus dibeli di Shop sebelum bisa dipilih.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
